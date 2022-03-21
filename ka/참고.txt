@@ -1,0 +1,24 @@
+s3 -> cloudtrail -> sns -> 전파
+
+s3 -> eventbridge -> Guard Duty Findings -> event bridge 규칙 -> sns
+
+// 정답
+각 서비스 s3를 로깅하는 Log>s3 -> cloudwatch -> cloudwatch events
+
+전체 Flow 그리기(draw.io)
+ - 1. Account 관점 개념도(Account 내 VPC 설정 후 TGW 연결)
+ - 2. NW관점(TGW, 가용성 포함, 라우팅 생략, 방화벽 포함, S3는 Cross Region Replication)
+
+IAM Role
+
+---- 참고 ----
+
+비정상인가 프로그램 flow
+https://techblog.woowahan.com/2558/
+
+https://aws.amazon.com/ko/blogs/security/how-to-detect-and-automatically-revoke-unintended-iam-access-with-amazon-cloudwatch-events/
+
+// Lambda로 SES 사용해서 이메일 보내기
+https://aws.amazon.com/ko/premiumsupport/knowledge-center/lambda-send-email-ses/
+
+https://iamkanikamodi.medium.com/write-a-sample-lambda-to-send-emails-using-ses-in-aws-a2e903d9129e

@@ -1,0 +1,58 @@
+// 생산 ec2
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {' 
+            "Sid": "DataMakerAllow",
+            "Effect": "Allow",
+            "Action": [
+		"s3:GetObject",
+		"s3:PutObject",
+		"s3:DeleteObject"
+	],
+            "Resource": [
+		"arn:aws:s3:::dev-s3-bucket/*",
+		"arn:aws:s3:::test-s3-bucket/*",
+		"arn:aws:s3:::prod-s3-bucket/*"
+	]
+        }
+    ]
+}
+
+// 분석 ec2 Role
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DataAnalyticsAllow",
+            "Effect": "Allow",
+            "Action": ["s3:GetObject"],
+            "Resource": [
+		"arn:aws:s3:::dev-s3-bucket",
+		"arn:aws:s3:::test-s3-bucket/*",
+		"arn:aws:s3:::prod-s3-bucket/*"
+	]
+        }
+    ]
+}
+
+// S3 Role -- Dev/Test/Prod
+
+{
+    "Version": "2012-10-17",
+    "Id": "Logging",
+    "Statement": [
+        {
+            "Sid": "LoggingToLogAccountS3",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+              	"s3:GetObject",
+              	"s3:GetObjectAcl"
+	],
+            "Resource": "arn:aws:s3:::log-s3/*"
+        }
+    ]
+}
