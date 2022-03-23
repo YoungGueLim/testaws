@@ -113,9 +113,9 @@ S3 접근하는것 추가하기
 		　　　　　　"s3:DeleteObject"  
 	  　　　　],  
     　　　　"Resource": [  
-		    　　　　　　    "arn:aws:s3:::dev-s3-bucket/*",  
-	       　　 　　	　　"arn:aws:s3:::test-s3-bucket/*",  
-	        　　	　　　　"arn:aws:s3:::prod-s3-bucket/*",  
+		    　　　　　　    "arn:aws:s3:::dev-s3/*",  
+	       　　 　　	　　"arn:aws:s3:::test-s3/*",  
+	        　　	　　　　"arn:aws:s3:::prod-s3/*",  
 	　　 　　 ]  
        　　 }  
     　]  
@@ -131,9 +131,9 @@ S3 접근하는것 추가하기
             　　　　"Action": "s3:GetObject"  
 	  　　　　],  
     　　　　"Resource": [  
-		    　　　　　　    "arn:aws:s3:::dev-s3-bucket/*",  
-	       　　 　　	　　"arn:aws:s3:::test-s3-bucket/*",  
-	        　　	　　　　"arn:aws:s3:::prod-s3-bucket/*",  
+		    　　　　　　    "arn:aws:s3:::dev-s3/*",  
+	       　　 　　	　　"arn:aws:s3:::test-s3/*",  
+	        　　	　　　　"arn:aws:s3:::prod-s3/*",  
 	　　 　　 ]  
        　　 }  
     　]  
