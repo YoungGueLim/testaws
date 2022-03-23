@@ -12,12 +12,12 @@
 ## 1. 요구사항  
   
   
-1. 각 서비스 계정들 (DEV, TEST, PROD), 관리 계정들(Log, Master, Sec)로 구분되어 있다.
-2. 각 서비스 계정들에 존재하는 S3에 접근하는 Role은 S3가 속한 각 계정의 특정한 Role만 허용한다.
-3. 각 서비스 계정들의 S3의 접근 기록은 Log 계정의 Log용 S3 한 곳에 저장되어야 한다.
-4. 데이터 생산팀의 권한은 S3에 모델을 읽고, 쓰고, 변경하고 삭제할 수 있다.
-5. 데이터 분석팀의 권한은 S3에서 모델을 읽을 수 있다
-6. 데이터분석팀이 조회 이외의 행위를 시도했을 때 메일로 알림을 받을 수 있어야 한다.
+1> 각 서비스 계정들 (DEV, TEST, PROD), 관리 계정들(Log, Master, Sec)로 구분되어 있다.  
+2> 각 서비스 계정들에 존재하는 S3에 접근하는 Role은 S3가 속한 각 계정의 특정한 Role만 허용한다.  
+3> 각 서비스 계정들의 S3의 접근 기록은 Log 계정의 Log용 S3 한 곳에 저장되어야 한다.  
+4> 데이터 생산팀의 권한은 S3에 모델을 읽고, 쓰고, 변경하고 삭제할 수 있다.  
+5> 데이터 분석팀의 권한은 S3에서 모델을 읽을 수 있다  
+6> 데이터분석팀이 조회 이외의 행위를 시도했을 때 메일로 알림을 받을 수 있어야 한다.  
 
 ----------------------
 
@@ -85,12 +85,12 @@
 ## 3. 리소스별 IAM Role
 
 * 데이터생산팀 EC2  
-![image](https://user-images.githubusercontent.com/11408378/159681500-f01a9fd1-166b-4ebb-9160-5b1018f05dcc.png)
+![image](https://user-images.githubusercontent.com/11408378/159683530-7c15e8d3-6ecc-46c3-914e-67238b5e6090.png)
 
 #
 
 * 데이터분석팀 EC2  
-![image](https://user-images.githubusercontent.com/11408378/159681429-098e86dd-622e-4b71-b0f0-ddcd6b3c634c.png)
+![image](https://user-images.githubusercontent.com/11408378/159683627-d8dacd6b-b809-40a6-825a-bf8bf050aa9e.png)
 
 #
 
