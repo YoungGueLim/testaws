@@ -1,26 +1,14 @@
-# Cloud Architecture
-
-NW 관점 구성도 추가 필요(TGW)  
-DEV/TEST/PROD 별 VPC 추가  
-TGW 넣기  
-FW 추가  
-S3 Archieve 추가해야되나?  
-S3 접근하는것 추가하기
+# Cloud Architecture  
   
-  •	관리가 쉽고, 보안적으로 안전하며, 확장성이 좋으며, 고가용성을 보장하며, 장애를 잘 감내하며, 자동 복구를 하는 클라우드 아키텍처를 설계합니다  
-  
-  * 서비스 개발팀이 필요한 부분에 대해서 추후 찾아 볼 수 있도록 관련된 Reference를 명기
-  
-----------------------
 
 ## 목차
 
 >1. 요구사항
 >2. 구성도
->3. 리소스별 권장 Role
-
-
-
+>3. 리소스별 IAM Role
+  
+  
+  
 ## 1. 요구사항  
   
   
@@ -35,7 +23,7 @@ S3 접근하는것 추가하기
 
 ## 2. 구성도
 
-* Account 관점 Architecture
+* Account 관점 구성도
 
 
 
@@ -50,9 +38,10 @@ S3 접근하는것 추가하기
 
 
 
-   ![image](https://user-images.githubusercontent.com/11408378/159658406-a4a470b0-8b06-4094-9eda-8299985c07c7.png)  
+   ![image](https://user-images.githubusercontent.com/11408378/159674865-59a54064-13f3-453a-be55-b10d78161abe.png)  
    
-[인터넷 연동]   
+[인터넷 연동]  
+  
 ① 인터넷 Ingress 트래픽  
   - 일원화된 DMZ VPC에 Internet Gateway 구성
   - DMZ VPC 내 ALB(또는 NLB) 생성, 외부용 
@@ -71,18 +60,18 @@ S3 접근하는것 추가하기
 
 ② VPC-On-Prem. 통신  
   - On-Prem. <-> AWS 연동은 전용선+Direct Link 구성, TGW Attach 연동  
-  - On-Prem.→VPC 통신은 Shared VPC내 내부용 FW을 통해 White-List 기반 통신 제어
+  - On-Prem. → VPC 통신은 Shared VPC내 내부용 FW을 통해 White-List 기반 통신 제어
 
 
 [방화벽 구성]  
 
 ① 3rd-Party Firewall  
-  - ALB/NLB 생성, 방화벽 EC2/License 설정
-      기본 Firewall 외 IDSIPS 고객 Needs 검토  
+  - ALB/NLB 생성, 방화벽 EC2/License 설정  
+  - 기본 Firewall 외 IDS/IPS 고객 Needs 검토  
   
 ② AWS Network Firewall  
-   - 라우팅 Flow는 3rd-Party Firewall과 동일
-   - 실시간 세션 테이블 조회 불가(운영 제약사항)  
+   - 라우팅 Flow는 3rd-Party Firewall과 동일  
+   - 실시간 세션 테이블 조회 불가
   
   ----------------------  
 
@@ -144,8 +133,28 @@ S3 접근하는것 추가하기
             　　　　"Effect": "Allow",  
             　　　　"Action": ["s3:GetObject", "s3:GetObjectAcl"  
 	  　　　　],  
-    　　　　"Resource": [  
+    　　　　"Resource": [   
 		    　　　　　　    "arn:aws:s3:::log-s3/*",  
+	　　 　　 ]  
+       　　 }  
+    　]  
+}  
+
+
+* Log S3 버킷 정책  
+
+>{  
+    　"Version": "2012-10-17",  
+    　"Id": "Logging",  
+    　"Statement": [  
+       　　 {'  
+           　　　　 "Sid": "LoggingFromOthers,  
+            　　　　"Effect": "Allow",  
+            　　　　"Action": [  
+		    　　　　　　    "s3:PutObject"  
+	  　　　　],  
+    　　　　"Resource": [   
+		    　　　　　　    "arn:aws:s3:::log-s3/*"  
 	　　 　　 ]  
        　　 }  
     　]  
