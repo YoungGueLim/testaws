@@ -94,8 +94,8 @@ S3 접근하는것 추가하기
 * 알람 동작 Flow
 
 
-  ![image](https://user-images.githubusercontent.com/11408378/159253263-a4faba7a-70c7-4b9b-8c3b-eb11774ce284.png)
-
+  ![image](https://user-images.githubusercontent.com/11408378/159668870-c35c6ac5-0018-49d7-8057-71d52c58bc62.png)  
+  
 ----------------------  
 
 ## 3. 리소스별 IAM Role
