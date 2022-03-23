@@ -84,82 +84,23 @@
 
 ## 3. 리소스별 IAM Role
 
-* 데이터생산팀 EC2
->{  
-    　"Version": "2012-10-17",  
-    　"Statement": [  
-       　　 {'  
-           　　　　 "Sid": "DataMakerAllow",  
-            　　　　"Effect": "Allow",  
-            　　　　"Action": [  
-		　　　　　　"s3:GetObject",  
-		　　　　　　"s3:PutObject",  
-		　　　　　　"s3:DeleteObject"  
-	  　　　　],  
-    　　　　"Resource": [  
-		    　　　　　　    "arn:aws:s3:::dev-s3/*",  
-	       　　 　　	　　"arn:aws:s3:::test-s3/*",  
-	        　　	　　　　"arn:aws:s3:::prod-s3/*",  
-	　　 　　 ]  
-       　　 }  
-    　]  
-}  
+* 데이터생산팀 EC2  
+![image](https://user-images.githubusercontent.com/11408378/159681500-f01a9fd1-166b-4ebb-9160-5b1018f05dcc.png)
 
-* 데이터분석팀 EC2
->{  
-    　"Version": "2012-10-17",  
-    　"Statement": [  
-       　　 {'  
-           　　　　 "Sid": "DataAnalyticsAllow",  
-            　　　　"Effect": "Allow",  
-            　　　　"Action": "s3:GetObject"  
-	  　　　　],  
-    　　　　"Resource": [  
-		    　　　　　　    "arn:aws:s3:::dev-s3/*",  
-	       　　 　　	　　"arn:aws:s3:::test-s3/*",  
-	        　　	　　　　"arn:aws:s3:::prod-s3/*",  
-	　　 　　 ]  
-       　　 }  
-    　]  
-}  
+#
 
-* 서비스(Dev/Test/Prod)별 S3 버킷 정책
->{  
-    　"Version": "2012-10-17",  
-    　"Id": "Logging",  
-    　"Statement": [  
-       　　 {'  
-           　　　　 "Sid": "LoggingToLogAccountS3",  
-            　　　　"Effect": "Allow",  
-            　　　　"Action": [  
-		    　　　　　　    "s3:GetObject",  
-		    　　　　　　    "s3:GetObjectAcl"  
-	  　　　　],  
-    　　　　"Resource": [   
-		    　　　　　　    "arn:aws:s3:::log-s3/*",  
-	　　 　　 ]  
-       　　 }  
-    　]  
-}  
+* 데이터분석팀 EC2  
+![image](https://user-images.githubusercontent.com/11408378/159681429-098e86dd-622e-4b71-b0f0-ddcd6b3c634c.png)
 
+#
+
+* 서비스(Dev/Test/Prod)별 S3 버킷 정책  
+![image](https://user-images.githubusercontent.com/11408378/159681642-0602301c-dc80-4697-be94-7ea003c6de60.png)
+
+#
 
 * Log S3 버킷 정책  
+ ![image](https://user-images.githubusercontent.com/11408378/159681762-9001425a-d174-4528-8343-9a64ca59d486.png)
 
->{  
-    　"Version": "2012-10-17",  
-    　"Id": "Logging",  
-    　"Statement": [  
-       　　 {'  
-           　　　　 "Sid": "LoggingFromOthers,  
-            　　　　"Effect": "Allow",  
-            　　　　"Action": [  
-		    　　　　　　    "s3:PutObject"  
-	  　　　　],  
-    　　　　"Resource": [   
-		    　　　　　　    "arn:aws:s3:::log-s3/*"  
-	　　 　　 ]  
-       　　 }  
-    　]  
-}  
 
 
