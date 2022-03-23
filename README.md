@@ -131,7 +131,9 @@
        　　 {'  
            　　　　 "Sid": "LoggingToLogAccountS3",  
             　　　　"Effect": "Allow",  
-            　　　　"Action": ["s3:GetObject", "s3:GetObjectAcl"  
+            　　　　"Action": [  
+		    　　　　　　    "s3:GetObject",  
+		    　　　　　　    "s3:GetObjectAcl"  
 	  　　　　],  
     　　　　"Resource": [   
 		    　　　　　　    "arn:aws:s3:::log-s3/*",  
