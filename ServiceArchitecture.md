@@ -1,4 +1,4 @@
-Application Architecture
+Service Architecture
 
 ----------------  
   
